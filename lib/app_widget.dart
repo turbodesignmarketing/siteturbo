@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 import 'package:siteturbo/features/home/presentation/pages/home_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -7,12 +8,16 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Turbo Design',
+      navigatorObservers: [
+        seoRouteObserver,
+      ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
+      home: const HomePage(),
     );
   }
 }
