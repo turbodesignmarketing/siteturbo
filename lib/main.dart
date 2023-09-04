@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:seo_renderer/seo_renderer.dart';
+import 'package:siteturbo/app_module.dart';
 import 'package:siteturbo/app_widget.dart';
 
 Future<void> main() async {
@@ -13,9 +15,9 @@ Future<void> main() async {
     projectId: 'siteturbo-7d4a6',
   ));
   runApp(
-    const RobotDetector(
+    RobotDetector(
       debug: false,
-      child: AppWidget(),
+      child: ModularApp(module: AppModule(), child: const AppWidget()),
     ),
   );
 }
