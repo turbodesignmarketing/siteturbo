@@ -8,9 +8,27 @@ abstract class _HomeControllerBase with Store {
   int serviceTypeSelectedIndex = 0;
 
   @observable
-  double selectionPosition = 0;
+  List<ServiceTypeEnum> serviceOptions = <ServiceTypeEnum>[
+    ServiceTypeEnum.socialMedia,
+    ServiceTypeEnum.branding,
+    ServiceTypeEnum.sites,
+    ServiceTypeEnum.impressos,
+    ServiceTypeEnum.captacao,
+    ServiceTypeEnum.ebooks,
+  ];
 
   @observable
-  double selectionTitleWidth = 172;
-  
+  ServiceTypeEnum selectedServiceType = ServiceTypeEnum.socialMedia;
+}
+
+enum ServiceTypeEnum {
+  socialMedia('SOCIAL MEDIA'),
+  branding('BRANDING'),
+  sites('SITES'),
+  impressos('IMPRESSOS'),
+  captacao('CAPTAÇÃO'),
+  ebooks('EBOOKS');
+
+  final String name;
+  const ServiceTypeEnum(this.name);
 }

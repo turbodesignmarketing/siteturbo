@@ -26,35 +26,35 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  late final _$selectionPositionAtom =
-      Atom(name: '_HomeControllerBase.selectionPosition', context: context);
+  late final _$serviceOptionsAtom =
+      Atom(name: '_HomeControllerBase.serviceOptions', context: context);
 
   @override
-  double get selectionPosition {
-    _$selectionPositionAtom.reportRead();
-    return super.selectionPosition;
+  List<ServiceTypeEnum> get serviceOptions {
+    _$serviceOptionsAtom.reportRead();
+    return super.serviceOptions;
   }
 
   @override
-  set selectionPosition(double value) {
-    _$selectionPositionAtom.reportWrite(value, super.selectionPosition, () {
-      super.selectionPosition = value;
+  set serviceOptions(List<ServiceTypeEnum> value) {
+    _$serviceOptionsAtom.reportWrite(value, super.serviceOptions, () {
+      super.serviceOptions = value;
     });
   }
 
-  late final _$selectionTitleWidthAtom =
-      Atom(name: '_HomeControllerBase.selectionTitleWidth', context: context);
+  late final _$selectedServiceTypeAtom =
+      Atom(name: '_HomeControllerBase.selectedServiceType', context: context);
 
   @override
-  double get selectionTitleWidth {
-    _$selectionTitleWidthAtom.reportRead();
-    return super.selectionTitleWidth;
+  ServiceTypeEnum get selectedServiceType {
+    _$selectedServiceTypeAtom.reportRead();
+    return super.selectedServiceType;
   }
 
   @override
-  set selectionTitleWidth(double value) {
-    _$selectionTitleWidthAtom.reportWrite(value, super.selectionTitleWidth, () {
-      super.selectionTitleWidth = value;
+  set selectedServiceType(ServiceTypeEnum value) {
+    _$selectedServiceTypeAtom.reportWrite(value, super.selectedServiceType, () {
+      super.selectedServiceType = value;
     });
   }
 
@@ -62,8 +62,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
   String toString() {
     return '''
 serviceTypeSelectedIndex: ${serviceTypeSelectedIndex},
-selectionPosition: ${selectionPosition},
-selectionTitleWidth: ${selectionTitleWidth}
+serviceOptions: ${serviceOptions},
+selectedServiceType: ${selectedServiceType}
     ''';
   }
 }

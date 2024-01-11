@@ -6,7 +6,9 @@ import 'package:siteturbo/theme/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +16,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 56),
       child: Row(
         children: [
-          const Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SvgAdapter(
-                  path: IconConstans.turboLogo,
-                  color: AppColors.turboWhite,
-                  width: 144,
-                  height: 38,
-                ),
-              ],
+          const Flexible(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: SvgAdapter(
+                path: IconConstans.turboLogo,
+                color: AppColors.turboWhite,
+                width: 144,
+                height: 38,
+              ),
             ),
           ),
           Expanded(
-            flex: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -37,11 +36,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   onTap: () {},
                 ),
                 AppBarButton(
-                  text: 'estou perdido',
-                  onTap: () {},
-                ),
-                AppBarButton(
-                  text: 'métricas',
+                  text: 'portfólio',
                   onTap: () {},
                 ),
                 AppBarButton(
@@ -89,10 +84,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     _launchUrl(
                         'https://api.whatsapp.com/send/?phone=5541999886074&text=Oi%2C+tudo+bem%3F+Gostaria+de+um+or%C3%A7amento%21&type=phone_number&app_absent=0');
                   },
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -179,10 +174,9 @@ class _CustomIconButtonState extends State<CustomIconButton> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
-            color: isHovered ? AppColors.turboBlack : AppColors.turbogreen,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: AppColors.turbogreen,
+              color: isHovered ? AppColors.turbogreen : AppColors.turboWhite,
             ),
           ),
           padding: const EdgeInsets.symmetric(
@@ -194,14 +188,14 @@ class _CustomIconButtonState extends State<CustomIconButton> {
                 path: IconConstans.whatsappLogo,
                 width: 20,
                 height: 20,
-                color: isHovered ? AppColors.turbogreen : AppColors.turboBlack,
+                color: isHovered ? AppColors.turbogreen : AppColors.turboWhite,
               ),
               const SizedBox(
                 width: 9,
               ),
               RenderTextAdapter(
                 text: 'vamos conversar',
-                color: isHovered ? AppColors.turbogreen : AppColors.turboBlack,
+                color: isHovered ? AppColors.turbogreen : AppColors.turboWhite,
                 fontSize: 20,
               ),
             ],
@@ -216,7 +210,11 @@ class CustomLinkIcon extends StatefulWidget {
   final String path;
   final Function() onTap;
 
-  const CustomLinkIcon({super.key, required this.path, required this.onTap});
+  const CustomLinkIcon({
+    super.key,
+    required this.path,
+    required this.onTap,
+  });
 
   @override
   State<CustomLinkIcon> createState() => _CustomLinkIconState();
