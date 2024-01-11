@@ -4,8 +4,6 @@ part 'home_controller.g.dart';
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
-  @observable
-  int serviceTypeSelectedIndex = 0;
 
   @observable
   List<ServiceTypeEnum> serviceOptions = <ServiceTypeEnum>[
@@ -19,6 +17,11 @@ abstract class _HomeControllerBase with Store {
 
   @observable
   ServiceTypeEnum selectedServiceType = ServiceTypeEnum.socialMedia;
+
+  @action
+  void setSelectedServiceType(ServiceTypeEnum serviceType) {
+    selectedServiceType = serviceType;
+  }
 }
 
 enum ServiceTypeEnum {

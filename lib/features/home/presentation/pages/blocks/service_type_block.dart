@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:siteturbo/adapters/render_text_adapter.dart';
 import 'package:siteturbo/features/home/presentation/controller/home_controller.dart';
+import 'package:siteturbo/features/home/presentation/widgets/service_type_tab_bar.dart';
 import 'package:siteturbo/theme/app_colors.dart';
 
 class ServiceTypeBlock extends StatelessWidget {
@@ -18,25 +19,7 @@ class ServiceTypeBlock extends StatelessWidget {
           height: 730,
           child: Column(
             children: [
-              SizedBox(
-                height: 31,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final service = controller.serviceOptions[index];
-                    return service == controller.selectedServiceType
-                        ? _buildSelectedButton(title: service.name)
-                        : _buildButton(title: service.name);
-                  },
-                  itemCount: controller.serviceOptions.length,
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      width: 40,
-                    );
-                  },
-                ),
-              ),
+              const ServiceTypeTabBar(),
               const SizedBox(
                 height: 26,
               ),
@@ -76,6 +59,7 @@ class ServiceTypeBlock extends StatelessWidget {
                                     fontSize: 32,
                                     fontWeight: FontWeight.bold,
                                     color: AppColors.turboBlack,
+                                    lineWeight: 1.1,
                                   ),
                                   const SizedBox(
                                     height: 24,
@@ -135,38 +119,6 @@ class ServiceTypeBlock extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  Widget _buildSelectedButton({required String title}) {
-    return Container(
-      height: 31,
-      decoration: BoxDecoration(
-        color: AppColors.turbogreen,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Center(
-          child: RenderTextAdapter(
-            text: title,
-            fontFamily: 'Poppins',
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: AppColors.turboBlack,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildButton({required String title}) {
-    return RenderTextAdapter(
-      text: title,
-      fontFamily: 'Poppins',
-      fontSize: 18,
-      fontWeight: FontWeight.bold,
-      color: AppColors.turboWhite,
     );
   }
 }

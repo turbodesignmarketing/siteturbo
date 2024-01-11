@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siteturbo/adapters/render_text_adapter.dart';
+import 'package:siteturbo/adapters/resolutions.dart';
 import 'package:siteturbo/adapters/svg_adapter.dart';
 import 'package:siteturbo/constans/icon_constants.dart';
 import 'package:siteturbo/theme/app_colors.dart';
@@ -12,6 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final resolution = Resolutions.getResolution(context: context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 56, vertical: 56),
       child: Row(
@@ -27,25 +29,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppBarButton(
-                  text: 'serviços',
-                  onTap: () {},
-                ),
-                AppBarButton(
-                  text: 'portfólio',
-                  onTap: () {},
-                ),
-                AppBarButton(
-                  text: 'sobre nós',
-                  onTap: () {},
-                ),
-              ],
+          if (resolution == CurrentResolution.isWeb)
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppBarButton(
+                    text: 'serviços',
+                    onTap: () {},
+                  ),
+                  AppBarButton(
+                    text: 'portfólio',
+                    onTap: () {},
+                  ),
+                  AppBarButton(
+                    text: 'sobre nós',
+                    onTap: () {},
+                  ),
+                ],
+              ),
             ),
-          ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -53,7 +56,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 CustomLinkIcon(
                   path: IconConstans.instagramLogo,
                   onTap: () {
-                    _launchUrl('https://www.instagram.com/_turbodesign/');
+                    _launchUrl(
+                      'https://www.instagram.com/_turbodesign/',
+                    );
                   },
                 ),
                 const SizedBox(
@@ -63,7 +68,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   path: IconConstans.facebookLogo,
                   onTap: () {
                     _launchUrl(
-                        'https://www.facebook.com/profile.php?id=100086114784506');
+                      'https://www.facebook.com/profile.php?id=100086114784506',
+                    );
                   },
                 ),
                 const SizedBox(
@@ -73,18 +79,31 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   path: IconConstans.linkedinLogo,
                   onTap: () {
                     _launchUrl(
-                        'https://linkedin.com/company/turbodesignemarketing');
+                      'https://linkedin.com/company/turbodesignemarketing',
+                    );
                   },
                 ),
                 const SizedBox(
                   width: 12,
                 ),
-                CustomIconButton(
-                  onTap: () {
-                    _launchUrl(
-                        'https://api.whatsapp.com/send/?phone=5541999886074&text=Oi%2C+tudo+bem%3F+Gostaria+de+um+or%C3%A7amento%21&type=phone_number&app_absent=0');
-                  },
-                ),
+                if (resolution != CurrentResolution.isCellPhone) ...{
+                  CustomIconButton(
+                    onTap: () {
+                      _launchUrl(
+                        'https://api.whatsapp.com/send/?phone=5541999886074&text=Oi%2C+tudo+bem%3F+Gostaria+de+um+or%C3%A7amento%21&type=phone_number&app_absent=0',
+                      );
+                    },
+                  ),
+                } else ...{
+                  CustomLinkIcon(
+                    path: IconConstans.whatsappLogo,
+                    onTap: () {
+                      _launchUrl(
+                        'https://api.whatsapp.com/send/?phone=5541999886074&text=Oi%2C+tudo+bem%3F+Gostaria+de+um+or%C3%A7amento%21&type=phone_number&app_absent=0',
+                      );
+                    },
+                  ),
+                }
               ],
             ),
           ),
