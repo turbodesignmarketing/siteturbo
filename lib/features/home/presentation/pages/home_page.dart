@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Transform.translate(
-              offset: const Offset(0, -60),
+              offset: const Offset(0, -120),
               child: ServiceTypeBlock(),
             ),
           ],

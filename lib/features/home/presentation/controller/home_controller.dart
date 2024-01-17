@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:siteturbo/features/home/presentation/widgets/service_type_enum.dart';
 part 'home_controller.g.dart';
 
 class HomeController = _HomeControllerBase with _$HomeController;
@@ -22,16 +23,4 @@ abstract class _HomeControllerBase with Store {
   void setSelectedServiceType(ServiceTypeEnum serviceType) {
     selectedServiceType = serviceType;
   }
-}
-
-enum ServiceTypeEnum {
-  socialMedia('SOCIAL MEDIA'),
-  branding('BRANDING'),
-  sites('SITES'),
-  impressos('IMPRESSOS'),
-  captacao('CAPTAÇÃO'),
-  ebooks('EBOOKS');
-
-  final String name;
-  const ServiceTypeEnum(this.name);
 }

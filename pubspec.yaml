@@ -43,6 +43,7 @@ dependencies:
   flutter_modular: ^6.3.1
   flutter_mobx: ^2.0.6+5
   animated_text_kit: ^4.2.2
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

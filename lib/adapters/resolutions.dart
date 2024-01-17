@@ -5,7 +5,7 @@ class Resolutions {
     final width = MediaQuery.sizeOf(context).width;
     if (width <= 768) {
       return CurrentResolution.isCellPhone;
-    } else if (width <= 1280) {
+    } else if (width <= 1100) {
       return CurrentResolution.isTablet;
     } else {
       return CurrentResolution.isWeb;
