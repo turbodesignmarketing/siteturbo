@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
                 'Ainda não estou pronto :(',
                 style: TextStyle(
                   fontSize: 32,
+                  color: AppColors.turbogreen,
                 ),
               ),
             ),
